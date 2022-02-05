@@ -1,0 +1,9 @@
+
+services:
+  www:
+    image: nginx:alpine
+    container_name: learning-www
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    ports:
+      - ${PORT:-8080}:80
