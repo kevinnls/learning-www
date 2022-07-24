@@ -25,18 +25,17 @@
 	    }
 	    #counter-container {
 		width: clamp(50%,450px,90%);
-		display: flex;
-		justify-content: space-between;
+		display: grid;
 		align-items: center;
+		grid-template-columns: 1fr 2fr 1fr;
+		grid-gap: 0.5ch;
 	    }
 	    .control {
 		font-size: 1rem;
-		flex-grow: 1;
-		flex-basis: 2ch;
-		flex-shrink: 0;
+		width: auto;
+		height: auto;
 	    }
 	    #counter {
-		flex-grow: 5;
 		text-align: center;
 	    }
 	</style>
