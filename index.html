@@ -11,17 +11,42 @@
 	    :root {
 		color-scheme: dark light;
 		box-sizing: border-box;
+		font-size: 32pt;
+		font-face: sans-serif;
 	    }
 	    body {
 		margin: 0px;
 		width: 100vw;
 		min-height: 100vh;
+		display: grid;
+		place-items: center;
+	    }
+	    #counter-container {
+		width: 50%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	    }
+	    .control {
+		font-size: 1rem;
+		flex-grow: 1;
+	    }
+	    #counter {
+		flex-grow: 5;
+		text-align: center;
 	    }
 	</style>
 </head>
 
 <body>
 
+    <section id="counter-container">
+    <button onclick="decrementCounter()" class="control">-</button>
+    <span id="counter">0</span>
+    <button onclick="incrementCounter()" class="control">+</button>
+    </section>
+
+    <script src="./index.js"></script>
 </body>
 
 </html>
