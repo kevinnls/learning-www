@@ -48,7 +48,13 @@
     </section>
 
     <script type="module">
-	import { incrementCounter, decrementCounter } from './module.js';
+	const moduleScope = 'hello, world! this value is not added to the global scope!';
+
+	const counter = document.getElementById('counter');
+
+	import { initialCounter, incrementCounter, decrementCounter } from './module.js';
+	counter.textContent = initialCounter;
+
 	document.getElementById('decCounter').addEventListener('click', decrementCounter);
 	document.getElementById('incCounter').addEventListener('click', incrementCounter);
     </script>
