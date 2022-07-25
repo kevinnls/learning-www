@@ -42,12 +42,16 @@
 <body>
 
     <section id="counter-container">
-    <button onclick="decrementCounter()" class="control">-</button>
+    <button id="decCounter"class="control">-</button>
     <span id="counter">0</span>
-    <button onclick="incrementCounter()" class="control">+</button>
+    <button id="incCounter" class="control">+</button>
     </section>
 
-    <script src="./index.js"></script>
+    <script type="module">
+	import { incrementCounter, decrementCounter } from './module.js';
+	document.getElementById('decCounter').addEventListener('click', decrementCounter);
+	document.getElementById('incCounter').addEventListener('click', incrementCounter);
+    </script>
 </body>
 
 </html>

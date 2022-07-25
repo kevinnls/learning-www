@@ -6,3 +6,4 @@ function decrementCounter(){
     document.getElementById('counter').textContent--
 }
 
+export { decrementCounter, incrementCounter };
