@@ -36,6 +36,30 @@
 	    #counter {
 		text-align: center;
 	    }
+	    #spinner {
+		margin: auto;
+		animation-name: spin;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	    }
+	    @keyframes spin {
+		from {
+		    transform: rotate(0turn);
+		}
+		25% {
+		    transform: rotate(.25turn);
+		}
+		50% {
+		    transform: rotate(.5turn);
+		}
+		75% {
+		    transform: rotate(.75turn);
+		}
+		to {
+		    transform: rotate(1turn);
+		}
+	    }
 	</style>
 </head>
 
@@ -43,7 +67,25 @@
 
     <section id="counter-container">
     <button id="decCounter"class="control">-</button>
-    <span id="counter">0</span>
+    <span id="counter">
+	<!--<span id="counter">0</span>-->
+	<svg id="spinner" fill="none" stroke="white" viewbox="0 0 10 10">
+	    <!--<circle
+		fill="none"
+		stroke="hotpink" stroke-width="1%"
+		cx="5" cy="5" r="2.5"/>-->
+	    <path d="
+		    M 5,5
+		    m -2.5,0
+		    c
+		     0,-2.5
+		     2.5,-2.5
+		     2.5,-2.5
+		    "
+		  stroke-width="1%"
+	    />
+	<svg/>
+    </span>
     <button id="incCounter" class="control">+</button>
     </section>
 
