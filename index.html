@@ -27,6 +27,9 @@
 		align-items: center;
 		grid-template-columns: 1fr 2fr 1fr;
 		grid-gap: 0.5ch;
+		position: relative;
+		left: 0;
+		top: 0;
 	    }
 	    .control {
 		font-size: 1rem;
@@ -36,29 +39,19 @@
 	    #counter {
 		text-align: center;
 	    }
-	    #spinner {
-		margin: auto;
-		animation-name: spin;
-		animation-duration: 1s;
-		animation-timing-function: linear;
-		animation-iteration-count: infinite;
+	    #center-pane {
+		position: relative;
+		left: 0;
+		top: 0;
+		display: grid;
+		place-items: center;
 	    }
-	    @keyframes spin {
-		from {
-		    transform: rotate(0turn);
-		}
-		25% {
-		    transform: rotate(.25turn);
-		}
-		50% {
-		    transform: rotate(.5turn);
-		}
-		75% {
-		    transform: rotate(.75turn);
-		}
-		to {
-		    transform: rotate(1turn);
-		}
+	    #spinner {
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		position: absolute;
+		transition: 3s;
 	    }
 	</style>
 </head>
@@ -66,27 +59,26 @@
 <body>
 
     <section id="counter-container">
-    <button id="decCounter"class="control">-</button>
-    <span id="counter">
-	<!--<span id="counter">0</span>-->
-	<svg id="spinner" fill="none" stroke="white" viewbox="0 0 10 10">
-	    <!--<circle
-		fill="none"
-		stroke="hotpink" stroke-width="1%"
-		cx="5" cy="5" r="2.5"/>-->
-	    <path d="
-		    M 5,5
-		    m -2.5,0
-		    c
-		     0,-2.5
-		     2.5,-2.5
-		     2.5,-2.5
-		    "
-		  stroke-width="1%"
-	    />
-	<svg/>
-    </span>
-    <button id="incCounter" class="control">+</button>
+	<button id="decCounter"class="control">-</button>
+	<span id="counter">
+	    <!--to be populated by JS-->
+	</span>
+	<button id="incCounter" class="control">+</button>
+
+	<svg width="100px" height="100px" id="spinner" fill="none" viewbox="0 0 11 11">
+	    <circle stroke="white" stroke-opacity="30%"
+		cx="5.5" cy="5.5" r="5"/>
+	    <path stroke="hotpink" d="
+		    M 5.5 .5
+		    a 5 5 90 0 1 5 5
+		      ">
+		<animateTransform attributeName="transform" attributeType="XML"
+		    type="rotate"
+		    dur="1s" repeatCount="indefinite"
+		    from="0 5.5 5.5"
+		    to="360 5.5 5.5"/>
+	    </path>
+	</svg>
     </section>
 
     <script type="module">
@@ -97,15 +89,18 @@
 	import { initialCounter, incrementCounter, decrementCounter } from './module.js';
 	import { storeToLocal } from './storagehelper.js'
 
-	counter.innerText = initialCounter;
-
 	const observeAndStoreToLocal = new MutationObserver(storeToLocal);
 
-	console.log(counter.firstChild.nodeName);
 	observeAndStoreToLocal.observe(counter.firstChild, { characterData: true, childList: true });
 
 	document.getElementById('decCounter').addEventListener('click', decrementCounter);
 	document.getElementById('incCounter').addEventListener('click', incrementCounter);
+
+	setTimeout(()=>{
+	    requestAnimationFrame(()=>{
+		document.getElementById('spinner').style.display = 'none';})
+		counter.innerText = initialCounter;
+	},500)
     </script>
 </body>
 
