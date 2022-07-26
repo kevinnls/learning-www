@@ -99,7 +99,7 @@
 	setTimeout(()=>{
 	    requestAnimationFrame(()=>{
 		document.getElementById('spinner').style.display = 'none';})
-		counter.innerText = initialCounter;
+		counter.firstChild.textContent = initialCounter;
 	},500)
     </script>
     <script type="module">
