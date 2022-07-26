@@ -102,6 +102,13 @@
 		counter.innerText = initialCounter;
 	},500)
     </script>
+    <script type="module">
+	import { initialCounter } from './module.js';
+	console.log('module imports are executed only once?');
+	try {
+	    console.log(valueHiddenInModule);
+	} catch(e) { console.warn('well, duh. couldn\'t find that value hidden in module')};
+    </script>
 </body>
 
 </html>
