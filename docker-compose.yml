@@ -1,9 +1,13 @@
+volumes:
+  modules:
 
 services:
   www:
-    image: nginx:alpine
-    container_name: learning-www
+    image: kevinnls/node-unprivileged:alpine
+    container_name: learning-www-vite
+    user: node
     volumes:
-      - ./:/usr/share/nginx/html:ro
+      - ./:/app
+      - modules:/app/node_modules
     ports:
       - ${PORT:-8080}:80
