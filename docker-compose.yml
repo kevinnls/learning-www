@@ -6,8 +6,10 @@ services:
     image: kevinnls/node-unprivileged:alpine
     container_name: learning-www-vite
     user: node
+    working_dir: /app
+    command: yarn run dev --host
     volumes:
       - ./:/app
       - modules:/app/node_modules
     ports:
-      - ${PORT:-8080}:80
+      - "${PORT:-8080}:5173"
