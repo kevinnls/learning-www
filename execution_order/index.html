@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<style>
+			:root {
+				color-scheme: dark;
+			}
+		</style>
+		<script type="module">
+			/*type=module always executes at end*/
+
+			console.log("in your head");
+		</script>
+	</head>
+	<body>
+		<script defer>
+			/*meaningless inlined*/
+			console.log("before your body");
+		</script>
+		hello, world
+		<script async>
+			/*meaningless inlined*/
+			console.log("at your feet");
+		</script>
+	</body>
+</html>
